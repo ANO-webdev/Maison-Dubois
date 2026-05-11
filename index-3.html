@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maison Dubois – Boulangerie & Pâtisserie, Paris</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #faf7f2;
+      --dark: #1f1a14;
+      --terracotta: #c4622d;
+      --rose: #e8c4a0;
+      --warm: #f0e6d3;
+      --mid: #7a6a55;
+      --green: #3d5240;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(250,247,242,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(196,98,45,0.12);
+    }
+    .logo {
+      text-align: center;
+    }
+    .logo-main {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .logo-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+    nav ul li a {
+      color: var(--mid);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover { color: var(--terracotta); }
+    .nav-reserve {
+      background: var(--terracotta);
+      color: #fff !important;
+      padding: 0.5rem 1.3rem;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+      padding-top: 70px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(196,98,45,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(232,196,160,0.1) 0%, transparent 40%);
+    }
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e8c4a0' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    .hero-tag::before, .hero-tag::after {
+      content: '✦';
+      font-size: 0.5rem;
+      color: var(--terracotta);
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 8vw, 9rem);
+      font-weight: 700;
+      line-height: 0.9;
+      color: var(--bg);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--terracotta);
+    }
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: rgba(250,247,242,0.55);
+      margin-bottom: 3rem;
+    }
+    .hero-actions { display: flex; gap: 1.2rem; align-items: center; }
+    .btn-main {
+      background: var(--terracotta);
+      color: #fff;
+      padding: 1rem 2.2rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-main:hover { background: #a84f23; transform: translateY(-2px); }
+    .btn-ghost {
+      color: rgba(250,247,242,0.6);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(250,247,242,0.2);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--rose); border-color: var(--rose); }
+
+    .hero-strip {
+      position: relative;
+      z-index: 1;
+      background: var(--terracotta);
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      padding: 1.4rem;
+      flex-wrap: wrap;
+    }
+    .hero-strip span {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.85);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .hero-strip span::before {
+      content: '●';
+      font-size: 0.4rem;
+      color: rgba(250,247,242,0.5);
+    }
+
+    /* INTRO */
+    .intro {
+      padding: 8rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .intro-text .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .intro-text .section-tag::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--terracotta);
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    h2 em { font-style: italic; color: var(--terracotta); }
+    .intro-text p {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--mid);
+      margin-bottom: 1rem;
+    }
+    .intro-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
+    .bread-card {
+      background: var(--warm);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      aspect-ratio: 1;
+    }
+    .bread-card.tall { grid-row: span 2; aspect-ratio: unset; }
+    .bread-card.dark { background: var(--dark); color: var(--bg); }
+    .bread-card.terra { background: var(--terracotta); color: #fff; }
+    .bread-emoji { font-size: 3rem; margin-bottom: 0.8rem; }
+    .bread-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-bottom: 0.3rem;
+    }
+    .bread-desc {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* MENU */
+    .menu {
+      padding: 8rem 5rem;
+      background: var(--dark);
+      color: var(--bg);
+    }
+    .menu .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .menu .section-tag::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--terracotta);
+    }
+    .menu h2 { color: var(--bg); margin-bottom: 4rem; }
+    .menu-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid rgba(250,247,242,0.1);
+    }
+    .tab {
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.4);
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s;
+    }
+    .tab.active { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid rgba(250,247,242,0.07);
+      gap: 1rem;
+    }
+    .menu-item:nth-child(odd) { padding-right: 3rem; border-right: 1px solid rgba(250,247,242,0.07); }
+    .menu-item:nth-child(even) { padding-left: 3rem; }
+    .menu-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+    .menu-info p {
+      font-size: 0.8rem;
+      color: rgba(250,247,242,0.45);
+      line-height: 1.5;
+      max-width: 260px;
+    }
+    .menu-price {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--terracotta);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* HOURS & VISIT */
+    .visit {
+      padding: 8rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+    }
+    .visit-left .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .visit-left .section-tag::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--terracotta);
+    }
+    .visit-left h2 { margin-bottom: 1.5rem; }
+    .visit-left p {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--mid);
+      margin-bottom: 2rem;
+    }
+    .hours-grid { display: flex; flex-direction: column; gap: 0; }
+    .hour-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(196,98,45,0.12);
+      font-size: 0.88rem;
+    }
+    .hour-row .day { color: var(--mid); letter-spacing: 0.05em; }
+    .hour-row .time { color: var(--dark); font-weight: 500; }
+    .hour-row .time.closed { color: rgba(31,26,20,0.3); font-weight: 300; }
+    .map-placeholder {
+      background: var(--warm);
+      border: 1px solid rgba(196,98,45,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      text-align: center;
+      min-height: 300px;
+    }
+    .map-placeholder .map-emoji { font-size: 3rem; margin-bottom: 1rem; }
+    .map-placeholder h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .map-placeholder p {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+    .directions-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--terracotta);
+      color: #fff;
+      padding: 0.75rem 1.8rem;
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .directions-btn:hover { background: #a84f23; }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--green);
+      padding: 5rem;
+      text-align: center;
+      color: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '✦';
+      position: absolute;
+      font-size: 20rem;
+      color: rgba(250,247,242,0.02);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .cta-band h2 {
+      color: var(--bg);
+      font-size: clamp(2rem, 4vw, 4rem);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .cta-band p {
+      font-size: 1rem;
+      color: rgba(250,247,242,0.6);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .cta-band .btn-main { position: relative; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      padding: 3rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo-main {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--bg);
+    }
+    .footer-logo-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+    footer p { font-size: 0.75rem; color: rgba(250,247,242,0.3); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a {
+      color: rgba(250,247,242,0.35);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--terracotta); }
+
+    /* ANIMATE */
+    .fade-up { opacity: 0; transform: translateY(24px); animation: fadeUp 0.8s ease forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .d1 { animation-delay: 0.1s; }
+    .d2 { animation-delay: 0.25s; }
+    .d3 { animation-delay: 0.4s; }
+    .d4 { animation-delay: 0.55s; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { display: none; }
+      .hero-content { padding: 3rem 1.5rem; }
+      .hero-strip { gap: 2rem; padding: 1rem 1.5rem; }
+      .intro { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
+      .intro-visual { grid-template-columns: 1fr 1fr; }
+      .bread-card.tall { grid-row: span 1; aspect-ratio: 1; }
+      .menu { padding: 5rem 2rem; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .menu-item:nth-child(odd) { padding-right: 0; border-right: none; }
+      .menu-item:nth-child(even) { padding-left: 0; }
+      .visit { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
+      .cta-band { padding: 4rem 2rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div>
+      <ul style="display:flex; gap: 2rem; list-style: none;">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </div>
+    <div class="logo">
+      <div class="logo-main">Maison Dubois</div>
+      <div class="logo-sub">Boulangerie · Pâtisserie · Paris</div>
+    </div>
+    <ul>
+      <li><a href="#visit">Hours</a></li>
+      <li><a href="#contact" class="nav-reserve">Réserver</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-tag fade-up">Depuis 1962 · Paris 6ème</div>
+      <h1 class="fade-up d1"><em>Artisan</em><br>Baking<br>Since<br><em>1962.</em></h1>
+      <p class="hero-sub fade-up d2">Where every loaf tells a story of craft, patience, and love.</p>
+      <div class="hero-actions fade-up d3">
+        <a href="#menu" class="btn-main">View Our Menu</a>
+        <a href="#visit" class="btn-ghost">Find Us →</a>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <span>Fresh Bread Daily from 06:30</span>
+      <span>Viennoiseries & Croissants</span>
+      <span>Wedding & Event Cakes</span>
+      <span>Organic Ingredients</span>
+      <span>Café & Salon de Thé</span>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="intro-text">
+      <div class="section-tag">Our Story</div>
+      <h2>Three Generations of <em>Artisan</em> Baking</h2>
+      <p>Founded by Henri Dubois in 1962 in the heart of Saint-Germain-des-Prés, Maison Dubois has been a neighbourhood institution for over sixty years. What began as a small corner boulangerie has grown into one of Paris's most beloved addresses for bread, pastry, and fine coffee.</p>
+      <p>Today, Henri's granddaughter Claire continues the tradition — sourcing organic stone-milled flour from a farm in the Loire Valley and slow-fermenting every sourdough for a minimum of 18 hours. Nothing here is rushed. Everything here is made with love.</p>
+    </div>
+    <div class="intro-visual">
+      <div class="bread-card tall">
+        <div class="bread-emoji">🥖</div>
+        <div class="bread-name">Baguette Tradition</div>
+        <div class="bread-desc">Stone-milled · Slow ferment</div>
+      </div>
+      <div class="bread-card">
+        <div class="bread-emoji">🥐</div>
+        <div class="bread-name">Croissant</div>
+        <div class="bread-desc">AOC Butter</div>
+      </div>
+      <div class="bread-card dark">
+        <div class="bread-emoji">🍞</div>
+        <div class="bread-name">Pain de Campagne</div>
+        <div class="bread-desc">18h fermentation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="section-tag">What We Make</div>
+    <h2>Our <em style="font-style:italic; color:var(--terracotta)">Menu</em></h2>
+    <div class="menu-tabs">
+      <div class="tab active">Boulangerie</div>
+      <div class="tab">Pâtisserie</div>
+      <div class="tab">Café</div>
+      <div class="tab">Traiteur</div>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-info">
+          <h4>Baguette Tradition</h4>
+          <p>Stone-milled flour, slow cold fermentation, crisp crust. Our signature since 1962.</p>
+        </div>
+        <div class="menu-price">€1.40</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-info">
+          <h4>Pain au Levain</h4>
+          <p>Organic sourdough, 18-hour ferment, open crumb. Available in 500g & 1kg.</p>
+        </div>
+        <div class="menu-price">€5.90</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-info">
+          <h4>Croissant Pur Beurre</h4>
+          <p>73 layers, AOP Charentes butter, fresh daily until sold out.</p>
+        </div>
+        <div class="menu-price">€1.90</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-info">
+          <h4>Pain aux Raisins</h4>
+          <p>Brioche dough, Corinthian raisins, crème pâtissière.</p>
+        </div>
+        <div class="menu-price">€2.20</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-info">
+          <h4>Fougasse aux Olives</h4>
+          <p>Provençal flatbread with Nyons olives, rosemary, and fleur de sel.</p>
+        </div>
+        <div class="menu-price">€4.50</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-info">
+          <h4>Pain de Seigle</h4>
+          <p>Dark rye with caraway seeds. Dense, earthy, excellent with cheese.</p>
+        </div>
+        <div class="menu-price">€5.20</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-info">
+          <h4>Chausson aux Pommes</h4>
+          <p>Caramelised Norman apple compote in a golden feuilleté pastry.</p>
+        </div>
+        <div class="menu-price">€2.50</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-info">
+          <h4>Pain de Campagne</h4>
+          <p>Rustic country loaf, wheat and rye blend. Perfect for any table.</p>
+        </div>
+        <div class="menu-price">€4.80</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="visit-left">
+      <div class="section-tag">Come & See Us</div>
+      <h2>Opening <em style="font-style:italic; color:var(--terracotta)">Hours</em></h2>
+      <p>We bake through the night so you can start your morning right. The smell of fresh bread greets you before you even open the door — we promise.</p>
+      <div class="hours-grid">
+        <div class="hour-row"><span class="day">Monday – Friday</span><span class="time">06:30 – 20:00</span></div>
+        <div class="hour-row"><span class="day">Saturday</span><span class="time">06:30 – 19:30</span></div>
+        <div class="hour-row"><span class="day">Sunday</span><span class="time">07:00 – 14:00</span></div>
+        <div class="hour-row"><span class="day">Public Holidays</span><span class="time">07:00 – 13:00</span></div>
+        <div class="hour-row"><span class="day">August (annual closure)</span><span class="time closed">Closed 1–21 Aug</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="map-placeholder">
+        <div class="map-emoji">📍</div>
+        <h4>Maison Dubois</h4>
+        <p>14, Rue de Buci<br>75006 Paris, France<br><br>Métro: Mabillon (line 10)<br>or Saint-Germain-des-Prés (line 4)</p>
+        <a href="https://maps.google.com" class="directions-btn">Get Directions →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" id="contact">
+    <h2>Order for Your <em style="font-style:italic">Special Event</em></h2>
+    <p>Wedding cakes, corporate orders, birthday gâteaux, or bespoke bread baskets — we craft to order.</p>
+    <a href="mailto:commandes@maisondubois.fr" class="btn-main">Contact Us for Orders</a>
+  </section>
+
+  <footer>
+    <div>
+      <div class="footer-logo-main">Maison Dubois</div>
+      <div class="footer-logo-sub">Boulangerie · Pâtisserie · Paris</div>
+    </div>
+    <p>© 2024 Maison Dubois. Tous droits réservés.</p>
+    <div class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">Instagram</a>
+      <a href="#">Presse</a>
+    </div>
+  </footer>
+
+</body>
+</html>
